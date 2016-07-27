@@ -1,6 +1,6 @@
 {
   "name": "stylesheet-helpers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Utilities to make it easier to work with CSS stylesheets.",
   "scripts": {
     "build": "rimraf ./dist-modules && babel ./src --out-dir ./dist-modules",
