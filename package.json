@@ -1,0 +1,39 @@
+{
+  "name": "stylesheet-helpers",
+  "version": "0.0.0",
+  "description": "Utilities to make it easier to work with CSS stylesheets.",
+  "scripts": {
+    "build": "rimraf ./dist-modules && babel ./src --out-dir ./dist-modules",
+    "preversion": "npm run build"
+  },
+  "files": [
+    "dist-modules",
+    "src",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bebraw/stylesheet-helpers.git"
+  },
+  "keywords": [
+    "css",
+    "stylesheet",
+    "stylesheets"
+  ],
+  "author": "Juho Vepsalainen <bebraw@gmail.com> (http://github.com/bebraw)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bebraw/stylesheet-helpers/issues"
+  },
+  "homepage": "http://reactabular.js.org/",
+  "main": "dist-modules",
+  "jsnext:main": "src",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "rimraf": "^2.5.4"
+  },
+  "peerDependencies": {}
+}
