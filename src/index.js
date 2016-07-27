@@ -47,7 +47,7 @@ function findExistingRule(styleSheet, className) {
   return null;
 }
 
-export default {
+export {
   create,
   updateProperties,
   findExistingRule
