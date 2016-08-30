@@ -27,7 +27,7 @@ function updateProperties(doc, styleSheet, className, properties) {
     styleSheet.insertRule(`.${className} {}`, 0);
 
     // The rule should exist now so try again.
-    updateProperties(styleSheet, className, properties);
+    updateProperties(doc, styleSheet, className, properties);
   }
 }
 
