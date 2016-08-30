@@ -1,9 +1,11 @@
-function create() {
-  const styleSheetElement = document.createElement('style');
-  styleSheetElement.type = 'text/css';
-  document.head.appendChild(styleSheetElement);
+function create(doc) {
+  doc = doc || document; // Default to global document
 
-  const styleSheets = document.styleSheets;
+  const styleSheetElement = doc.createElement('style');
+  styleSheetElement.type = 'text/css';
+  doc.head.appendChild(styleSheetElement);
+
+  const styleSheets = doc.styleSheets;
 
   return {
     styleSheetElement,
@@ -12,8 +14,8 @@ function create() {
   };
 }
 
-function updateProperties(styleSheet, className, properties) {
-  const existingRule = findExistingRule(styleSheet, className);
+function updateProperties(doc, styleSheet, className, properties) {
+  const existingRule = findExistingRule(doc, styleSheet, className);
 
   if (existingRule) {
     Object.keys(properties).forEach(property => {
@@ -29,9 +31,11 @@ function updateProperties(styleSheet, className, properties) {
   }
 }
 
-function findExistingRule(styleSheet, className) {
+function findExistingRule(doc, styleSheet, className) {
+  doc = doc || document; // Default to global document
+
   // http://stackoverflow.com/a/566445/228885
-  const cssRuleCode = document.all ? 'rules' : 'cssRules'; // IE, FF
+  const cssRuleCode = doc.all ? 'rules' : 'cssRules'; // IE, FF
   const cssRules = styleSheet[cssRuleCode];
   let cssRule;
   let i;
