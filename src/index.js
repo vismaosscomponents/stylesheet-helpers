@@ -40,6 +40,10 @@ function findExistingRule(doc, styleSheet, className) {
   let cssRule;
   let i;
 
+  if (!cssRules) {
+    return null;
+  }
+
   for (i = 0; i < cssRules.length; i++) {
     cssRule = cssRules[i];
 
