@@ -1,22 +1,20 @@
 function create(doc) {
   doc = doc || document; // Default to global document
 
-  const title = Math.random().toString(36).substr(2, 12);
   const styleSheetElement = doc.createElement('style');
   styleSheetElement.type = 'text/css';
-  styleSheetElement.title = title;
   doc.head.appendChild(styleSheetElement);
 
   const styleSheets = doc.styleSheets;
-  let i;
-  for(i=0; i < styleSheets.length; i++){
-     if(styleSheets[i].title == title){
-         return {
-             styleSheetElement,
-             // Return the newly created stylesheet.
-             styleSheet: styleSheets[i]
-         };
-     }
+  // Find the latest stylesheet with no href
+  for (let i = styleSheets.length - 1; i >= 0; i--) {
+    if (styleSheets[i].href == null) {
+      return {
+        styleSheetElement,
+        // Return the newly created stylesheet.
+        styleSheet: styleSheets[i]
+      };
+    }
   }
   throw new Error("Something went wrong. We weren't able to find the newly created stylesheet.");
 }
