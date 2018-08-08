@@ -1,16 +1,24 @@
 function create(doc) {
   doc = doc || document; // Default to global document
 
+  const title = Math.random().toString(36).substr(2, 5);
   const styleSheetElement = doc.createElement('style');
   styleSheetElement.type = 'text/css';
+  styleSheetElement.title = title;
   doc.head.appendChild(styleSheetElement);
 
   const styleSheets = doc.styleSheets;
-
+  let newStyleSheet = styleSheets[styleSheets.length-1];
+  let i;
+  for(i=0; i < styleSheets.length; i++){
+     if(styleSheets[i].title == title){
+        newStyleSheet = styleSheets[i];
+     }
+  }
   return {
     styleSheetElement,
-    // Return the newly created stylesheet. We can assume it's the last.
-    styleSheet: styleSheets[styleSheets.length - 1]
+    // Return the newly created stylesheet.
+    styleSheet: newStyleSheet
   };
 }
 
