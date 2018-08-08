@@ -1,25 +1,24 @@
 function create(doc) {
   doc = doc || document; // Default to global document
 
-  const title = Math.random().toString(36).substr(2, 5);
+  const title = Math.random().toString(36).substr(2, 12);
   const styleSheetElement = doc.createElement('style');
   styleSheetElement.type = 'text/css';
   styleSheetElement.title = title;
   doc.head.appendChild(styleSheetElement);
 
   const styleSheets = doc.styleSheets;
-  let newStyleSheet = styleSheets[styleSheets.length-1];
   let i;
   for(i=0; i < styleSheets.length; i++){
      if(styleSheets[i].title == title){
-        newStyleSheet = styleSheets[i];
+         return {
+             styleSheetElement,
+             // Return the newly created stylesheet.
+             styleSheet: styleSheets[i]
+         };
      }
   }
-  return {
-    styleSheetElement,
-    // Return the newly created stylesheet.
-    styleSheet: newStyleSheet
-  };
+  throw new Error("Something went wrong. We weren't able to find the newly created stylesheet.");
 }
 
 function updateProperties(doc, styleSheet, className, properties) {
